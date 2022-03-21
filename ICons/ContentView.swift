@@ -27,7 +27,7 @@ struct ContentView: View {
                         .padding().font(Font.system(size: 20)).background((Color(red: 0.9, green: 0.9 , blue: 0.9, opacity: 1)))
                         .cornerRadius(5).frame(width: 350, height:35 ).padding(.bottom, 20).foregroundColor(.black).scaledToFit()
 
-                    NavigationLink (destination: SecondScreen(), label:{ LoginView()})
+                    NavigationLink (destination: Home(), label:{ LoginView()})
 
                 }
                 .scaledToFit()
@@ -63,13 +63,7 @@ struct SecondScreen: View {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
-            checkout()
-                .tabItem(){
-                    Image(systemName: "cart")
-                    Text("Checkout")
-                }
         }.accentColor(.white)
-        .navigationBarBackButtonHidden(true)
         .navigationBarHidden(false)
             
     }

@@ -15,12 +15,16 @@ struct checkout: View {
             ScrollView{
             ZStack{
                 Color.red.ignoresSafeArea()
-                Image(systemName: "cart").foregroundColor(.white).font(.system(size:100.0))
-                Image(systemName: "cart").foregroundColor(.white).font(.system(size:100.0))
-                Image(systemName: "cart").foregroundColor(.white).font(.system(size:100.0))
-                Image(systemName: "cart").foregroundColor(.white).font(.system(size:100.0))
+                VStack(alignment: .center, spacing: 200){
+                    Image(systemName: "cart").foregroundColor(.white).font(.system(size:100.0))
+                    Image(systemName: "cart").foregroundColor(.white).font(.system(size:100.0))
+                    Image(systemName: "cart").foregroundColor(.white).font(.system(size:100.0))
+                    Image(systemName: "cart").foregroundColor(.white).font(.system(size:100.0))
+                    NavigationLink(destination: Home(), label: {CheckView()}).navigationViewStyle(.stack).navigationBarTitle(Title)
+                }
+                
             }
-        }}.navigationBarTitle(Title)
+            }}
     }
 }
 
