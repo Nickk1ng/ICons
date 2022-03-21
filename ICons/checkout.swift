@@ -9,10 +9,18 @@ import SwiftUI
 
 struct checkout: View {
     var body: some View {
+        let Title = "CheckOut"
         ZStack{
             Color.red.ignoresSafeArea()
-            Image(systemName: "cart").foregroundColor(.white).font(.system(size:100.0))
-        }
+            ScrollView{
+            ZStack{
+                Color.red.ignoresSafeArea()
+                Image(systemName: "cart").foregroundColor(.white).font(.system(size:100.0))
+                Image(systemName: "cart").foregroundColor(.white).font(.system(size:100.0))
+                Image(systemName: "cart").foregroundColor(.white).font(.system(size:100.0))
+                Image(systemName: "cart").foregroundColor(.white).font(.system(size:100.0))
+            }
+        }}.navigationBarTitle(Title)
     }
 }
 

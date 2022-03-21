@@ -12,8 +12,8 @@ struct ContentView: View {
     @State var password: String = ""
     var body: some View {
        NavigationView{
-            ZStack(alignment: .center){
-                GradientView().scaledToFill().transition(.identity)
+           ZStack(alignment: .center){
+                GradientView().ignoresSafeArea()
                 VStack(alignment: .center){
                     ImageView(image: "Screen Shot")
                         .frame(minWidth: 150, idealWidth: 200 , maxWidth: 250, minHeight: 150, idealHeight: 200, maxHeight: 250, alignment: .center).cornerRadius(48).scaledToFit()
@@ -26,30 +26,31 @@ struct ContentView: View {
                     SecureField("Password", text: $password)
                         .padding().font(Font.system(size: 20)).background((Color(red: 0.9, green: 0.9 , blue: 0.9, opacity: 1)))
                         .cornerRadius(5).frame(width: 350, height:35 ).padding(.bottom, 20).foregroundColor(.black).scaledToFit()
-                    
+
                     NavigationLink (destination: SecondScreen(), label:{ LoginView()})
-                            
+
                 }
                 .scaledToFit()
-            }.navigationBarHidden(true)
-            
+            }
+            .navigationBarHidden(true)
         }
-        .onAppear {
+       .onAppear {
             let appearance = UINavigationBarAppearance()
             appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
             appearance.backgroundColor = UIColor(Color(red: 0.0, green: 0.3, blue: 0.6).opacity(0.9))
-            
+
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
         }
-        
-    
     }
 }
 
 struct SecondScreen: View {
-    
-    
+    init() {
+            UITabBar.appearance().backgroundColor = UIColor(Color(red: 0.0, green: 0.3, blue: 0.6).opacity(1))
+            UITabBar.appearance().unselectedItemTintColor = UIColor.black
+        }
+    @State var Title: String = ""
     var body: some View {
         TabView{
             Browse()
@@ -67,10 +68,10 @@ struct SecondScreen: View {
                     Image(systemName: "cart")
                     Text("Checkout")
                 }
-        }
+        }.accentColor(.white)
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(false)
-
+            
     }
 }
 
@@ -121,11 +122,13 @@ struct GradientView: View{
             Rectangle()
             .animatableGradient(fromGradient: gradient1, toGradient: gradient2, progress: progress)
             .ignoresSafeArea()
-            .onAppear {
-                withAnimation(.linear(duration: 5.0).repeatForever(autoreverses: true).delay(1)) {
-                    self.progress = 1.0
+            .onAppear{
+                DispatchQueue.main.async {
+                    withAnimation(.linear(duration: 5.0).repeatForever(autoreverses: true) ) {
+                        self.progress = 1.0
+                    }
                 }
-            }.scaledToFill()
+            }
     }
 }
 
