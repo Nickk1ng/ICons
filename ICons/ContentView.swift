@@ -20,11 +20,11 @@ struct ContentView: View {
                     TextView().scaledToFit()
                     TextField( "NetID@queensu.ca", text: $username)
                         .padding().font(Font.system(size: 20))
-                        .background(RoundedRectangle(cornerRadius: 5).fill(Color(red: 0.9, green: 0.9 , blue: 0.9, opacity: 1)))
+                        .background(RoundedRectangle(cornerRadius: 5).fill(Color(red: 0.95, green: 0.95 , blue: 0.95, opacity: 1)))
                         .frame(width: 350, height: 35).padding().foregroundColor(.black).scaledToFit()
 
                     SecureField("Password", text: $password)
-                        .padding().font(Font.system(size: 20)).background((Color(red: 0.9, green: 0.9 , blue: 0.9, opacity: 1)))
+                        .padding().font(Font.system(size: 20)).background((Color(red: 0.95, green: 0.95 , blue: 0.95, opacity: 1)))
                         .cornerRadius(5).frame(width: 350, height:35 ).padding(.bottom, 20).foregroundColor(.black).scaledToFit()
 
                     NavigationLink (destination: Home(), label:{ LoginView()})
@@ -152,7 +152,16 @@ struct ImageView: View {
             .clipped().scaledToFit()
     }
 }
-
+struct ProductView: View {
+    var ImageName = ""
+    var ProductName = ""
+    var body: some View{
+        VStack{
+            ImageView(image: ImageName).cornerRadius(15).fixedSize(horizontal: false, vertical: true).frame(height: 200).clipped()
+            Text(ProductName).font(.subheadline).fontWeight(.medium).foregroundColor(.white)
+        }
+    }
+}
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
